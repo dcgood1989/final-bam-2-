@@ -43,9 +43,9 @@ feature "managing magazines" do
 		click_on "Create Edition"
 		expect(page).to have_content("Unable to save. Please fill out all fields")
 
-		fill_in :edition, with: 11
-		fill_in :issue, with: 11
-		fill_in :date, with: Date.today
+		fill_in "Edition", with: 11
+		fill_in "Issue", with: 11
+		fill_in "Date", with: Date.today
 		select "National Geographic", from: "Magazines"
 
 		click_on "Create Edition"
