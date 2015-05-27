@@ -4,7 +4,7 @@ describe User do
 	describe "validations" do
 		let(:valid_attributes) {
 			{
-				username: "Sample User", 
+				email: "bobross@example.com", 
 				password: "password", 
 				password_confirmation: "password"
 			}
@@ -15,12 +15,12 @@ describe User do
 			expect(user.valid?).to eq true
 		end
 
-		it "is invalid witout a username" do
-			valid_attributes[:username] = nil
+		it "is invalid witout an email" do
+			valid_attributes[:email] = nil
 			user = User.new(valid_attributes)
 
 			expect(user.valid?).to eq false
-			expect(user.errors[:username]).to eq ["can't be blank"]
+			expect(user.errors[:email]).to eq ["can't be blank"]
 		end
 	end
 end
