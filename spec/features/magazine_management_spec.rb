@@ -33,7 +33,7 @@ feature "managing magazines" do
 	end
 
 	scenario "can create editions for a magazine" do
-		Magazine.create!(title: "National Geographic")
+		magazine = Magazine.create!(title: "National Geographic")
 		visit root_path
 
 		click_on "New Edition"
@@ -52,6 +52,12 @@ feature "managing magazines" do
 		expect(page).to have_content("New Edition For National Geographic Saved")
 		expect(current_path).to eq edition_path(Edition.last)
 		expect(page).to have_content "National Geographic Edition 11, Issue 11: Published #{Date.today.strftime('%m-%d-%Y')}."
+
+		visit magazine_path(magazine)
+		expect(page).to_not have_content "No Editions Present"
+
+		click_on "Edition 11, Issue 11: Published #{Date.today.strftime('%m-%d-%Y')}"
+		expect(current_path).to eq edition_path(Edition.last)
 	end
 
 	scenario "can edit editions for a magazine" do
@@ -68,5 +74,8 @@ feature "managing magazines" do
 		click_on "Update Edition"
 
 		expect(page).to have_content("Edition For PC Gamer Saved")
+
+		visit magazine_path(magazine)
+		expect(page).to have_link "Edition 1, Issue 1: Published #{Date.today.strftime('%m-%d-%Y')}"
 	end
 end
