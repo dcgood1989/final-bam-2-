@@ -1,0 +1,17 @@
+<%= form_for @edition do |f| %>
+
+<%= f.label :edition %>
+<%= f.text_field :edition %>
+
+<%= f.label :issue %>
+<%= f.number_field :issue %>
+
+<%= f.label :date %>
+<%= f.date_field :date %>
+
+<%= f.label :magazine_id, "Magazines" %>
+<%= f.collection_select(:magazine_id, Magazine.all, :id, :title) %>
+
+<%= f.submit "Create Edition" %>
+
+<% end %>
