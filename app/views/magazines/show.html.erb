@@ -5,8 +5,7 @@ No Editions Present
 <% end %>
 
 <% @editions.each do |edition| %>
-<%= link_to "Edition 1, Issue 1: Published #{Date.today.strftime('%m-%d-%Y')}", edition_path(edition) %>
+<%= link_to edition.full_edition, edition_path(edition) %>
 
-<%= link_to "Edition 11, Issue 11: Published 05-28-2015", edition_path(edition) %>
 
 <% end %>
