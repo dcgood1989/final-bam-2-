@@ -75,7 +75,7 @@ feature "managing magazines" do
 
 		expect(page).to have_content("Edition For PC Gamer Saved")
 
-		visit magazine_path(magazine)
+		visit magazine_path(Magazine.last)
 		expect(page).to have_link "Edition 1, Issue 1: Published #{Date.today.strftime('%m-%d-%Y')}"
 	end
 end
